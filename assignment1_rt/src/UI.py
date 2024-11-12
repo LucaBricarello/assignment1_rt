@@ -3,6 +3,7 @@
 
 
 
+
 import rospy
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
@@ -13,43 +14,30 @@ from turtlesim.srv import Spawn
 
 
 def turtle_callback():
+
+	# Ask which turtle to move
     
 	print("\n")
 	print("Which turtle do you want to move? (insert 1 or 2)\n")
 	turtle_decision = int(input("--> "))
 	print("\n")
-    
-	print("To go ahead insert 1 \nTo rotate insert 2 \nTo translate left or right insert 3\n")
-	movement_decision = int(input("--> "))
+	
+	# Choose velocities and building my_vel msg
+	
+	print("Choose velocity on X turtle axis\n")
+	my_vel.linear.x = float(input("--> "))
 	print("\n")
-    
-	print("Choose velocity intensity\n")
-	intensity_decision = float(input("--> "))
+	
+	print("Choose velocity on Y turtle axis\n")
+	my_vel.linear.y = float(input("--> "))
+	print("\n")
+	
+	print("Choose angular velocity aroud Z turtle axis\n")
+	my_vel.angular.z = float(input("--> "))
 	print("\n")
 
-	# ------------- building my_vel msg
 
-	if movement_decision == 1 :
-    		my_vel.linear.x = intensity_decision
-    		my_vel.linear.y = 0
-    		my_vel.angular.z = 0
-    	
-	elif movement_decision == 2 :
-		my_vel.linear.x = 0
-		my_vel.linear.y = 0
-		my_vel.angular.z = intensity_decision
-		
-	elif movement_decision == 3 :
-		my_vel.linear.x = 0
-		my_vel.linear.y = intensity_decision
-		my_vel.angular.z = 0
-    	
-	else :
-		print("ERROR. movement code invalid")
-		my_vel.linear.x = 0
-		my_vel.angular.z = 0
-
-	# ----------- sending my_vel msg to the right turtle
+	# sending my_vel msg to the right turtle
 
 	if turtle_decision == 1 :
 
@@ -60,7 +48,7 @@ def turtle_callback():
 		pub2.publish(my_vel)
     
 	else :
-		print("ERROR. only turtle1 and turtle2 are available, invalid input")
+		print("ERROR: only turtle1 and turtle2 are available, invalid input")
     
 	rate.sleep()
 
@@ -89,6 +77,8 @@ def main():
     	turtle_callback()
 
     #rospy.spin()
+
+
 
 
 
