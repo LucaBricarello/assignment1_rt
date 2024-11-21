@@ -13,7 +13,7 @@ from turtlesim.srv import Spawn
 
 
 
-def turtle_callback():
+def turtle_command_move():
 
 	# Ask which turtle to move
     
@@ -50,7 +50,7 @@ def turtle_callback():
 	else :
 		print("ERROR: only turtle1 and turtle2 are available, invalid input")
     
-	rate.sleep()
+	rospy.sleep(1)			# sleep 1 sec
 
 
 
@@ -71,10 +71,10 @@ def main():
     
     my_vel = Twist()
     
-    rate = rospy.Rate(1)
+    # rate = rospy.Rate(1)
     
     while not rospy.is_shutdown() :
-    	turtle_callback()
+    	turtle_command_move()
 
     #rospy.spin()
 
