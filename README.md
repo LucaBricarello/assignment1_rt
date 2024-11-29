@@ -31,3 +31,9 @@ The second node is Distance.py.
 This node subcribes to the topics of the position of the two turtles and computes the distance between them. This value is saved in a Float32 message and published on the topic '/turtle_distance'.
 This node also stops the turles if they get too close to each other (threshold distance set to 1) or if they are too close to the boundaries.
 When the turtles stop for any of the 2 reasons above they have already passed the limit values, so at the next iteration they will be stopped again and so on. For this reason as soon as the turtles are stopped they are brought back again in the 'safe zone' with the teleport service.
+
+# Note
+
+In UI.py no control of the input has been implemented, so if something different from a number is inserted the node will close itself.
+
+If too high velocities are used the correct functioning of the node is not guaranteed, in particular the teleport service might have some problems.
