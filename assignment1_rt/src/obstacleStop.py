@@ -57,8 +57,8 @@ def main():
 	# Define the publisher and subscriber
 	pub1 = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=1)
 	pub2 = rospy.Publisher('/turtle2/cmd_vel', Twist, queue_size=1)
-	rospy.Subscriber('/turtle1/obstacle', Pose, turtle1_callback)
-	rospy.Subscriber('/turtle2/obstacle', Pose, turtle2_callback)
+	rospy.Subscriber('/turtle1/obstacle', Float32MultiArray, turtle1_callback)
+	rospy.Subscriber('/turtle2/obstacle', Float32MultiArray, turtle2_callback)
 
 
 	my_vel = Twist()
